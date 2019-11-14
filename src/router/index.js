@@ -14,9 +14,9 @@ const routes = [
     component: DashboardLayout,
     children: [
       {
-        name: 'UserController',
+        name: 'LayananController',
         path: '',
-        component: loadView('userController')
+        component: loadView('layananController')
       }
     ]
   }

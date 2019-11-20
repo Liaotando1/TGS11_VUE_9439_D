@@ -14,13 +14,15 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title
+              @click="$router.push({name:item.name}).catch(err => {})"
+            >{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn block>Logout</v-btn>
+          <v-btn block @click="logout()">Logout</v-btn>
         </div>
       </template>
     </v-navigation-drawer>
@@ -43,8 +45,26 @@ export default {
   data() {
     return {
       drawer: null,
-      items: [{ title: "User Controller", icon: "mdi-human-male" }]
+      items: [
+        {
+          title: "User Controller",
+          icon: "mdi-human-male",
+          name: "userController"
+        },
+        {
+          title: "Layanan Controller",
+          icon: "mdi-cat",
+          name: "layananController"
+        }
+      ]
     };
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push({ name: "loginLayout" });
+      alert("Success Logout!");
+    }
   }
 };
 </script>

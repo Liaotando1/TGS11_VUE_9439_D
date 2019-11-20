@@ -122,6 +122,11 @@ export default {
   },
   methods: {
     getData() {
+      var getToken = {
+        headers: {
+          Authorizantion: "Bearer " + localStorage.getItem("token")
+        }
+      };
       var uri = this.$apiUrl + "/user";
       this.$http.get(uri).then(response => {
         this.users = response.data.message;
@@ -164,6 +169,7 @@ export default {
           this.snackbar = true; //mengaktifkan snackbar
           this.color = "green"; //memberi warna snackbar
           this.text = response.data.message; //memasukkan pesan ke snackba
+          
           this.load = false;
           this.dialog = false;
           this.getData(); //mengambil data user

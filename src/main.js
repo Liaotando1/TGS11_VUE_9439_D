@@ -5,7 +5,7 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 
 Vue.prototype.$http = Axios;
-Vue.prototype.$apiUrl = 'http://localhost:8080/modul11/index.php';
+Vue.prototype.$apiUrl = 'http://localhost:8070/modul11/index.php';
 
 Vue.config.productionTip = false
 
